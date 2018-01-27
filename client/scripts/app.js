@@ -8,7 +8,7 @@ $(document).ready(function() {
 var app = {
   server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
 
-  data: null,
+  data: 'hello',
 
   init: function() {
     $('#main').find('.username').on('click', app.handleUsernameClick);
@@ -29,9 +29,11 @@ var app = {
       url: app.server,
       data: { order: '-createdAt' },
       contentType: 'application/json',
-      success: function(data) {
-        app.data = JSON.parse(data);
-        return data; 
+      success: function() {
+        console.log('hello');
+        console.log(app.data);
+        //data = JSON.parse(data);
+        return app.data; 
       },
       dataType: 'text'
     });
