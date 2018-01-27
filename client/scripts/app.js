@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 var app = {
-  server: 'http://parse.hrsf90.hackreactor.com/chatterbox/classes/messages',
+  server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
 
   init: function() {
     $('#main').find('.username').on('click', app.handleUsernameClick);
@@ -15,18 +15,29 @@ var app = {
   send: function(message) {
     $.ajax({
       type: 'POST',
-      url: 'http://parse.hrsf90.hackreactor.com/chatterbox/classes/messages',
+      url: app.server,
       data: message
     });
     return true;
   },
 
   fetch: function() {
-    $.ajax({
+    var posts = $.ajax({
       type: 'GET',
-      url: 'http://parse.hrsf90.hackreactor.com/chatterbox/classes/messages',
-      success: function() {}
+      url: app.server,
+      data: { order: '-createdAt' },
+      contentType: 'application/json',
+      success: function(data) {
+        return data; 
+      },
+      dataType: 'text'
     });
+    console.log(posts);
+  },
+
+  loadAllMessages: function() {
+    //var messages = JSON.parse(fetch()).results;
+    
   },
 
   clearMessages: function() {
@@ -65,10 +76,10 @@ var app = {
 
   handleSubmit: function(event) {
     //send message
-    event.preventDefault();
+    event.preventDefault(); 
     alert('sent');
-    //event.stopPropagation();
-    app.send($('#message').text);
+    event.stopPropagation();
+    //app.send($('#message').text);
     //rerender form?
     return;
   },
@@ -85,5 +96,7 @@ var app = {
   } 
 };
 
+
+//app.handleSubmit();
 
 
