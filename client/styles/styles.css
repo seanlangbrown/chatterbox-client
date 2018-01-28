@@ -65,7 +65,6 @@ form input[type=text] {
     overflow-y: auto;
 }
 
-
 .chats .username {
     font-weight: 800;
     color: blue;
@@ -79,6 +78,10 @@ form input[type=text] {
 
 .chats:hover {
     background-color: #ddd;
+}
+
+#roomSelect {
+    width: 500px;
 }
 
 .spinner {
