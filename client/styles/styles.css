@@ -60,9 +60,10 @@ form input[type=text] {
 }
 
 .chats {
-    width: 1000px;
+    width: 500px;
     height: 500px;
     overflow-y: auto;
+    overflow-x: none; 
 }
 
 .chats .username {
